@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+
     'user',
     'categories',
     'product'
@@ -82,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'shop_db',
         'USER': 'root',
-        'PASSWORD': '314',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '3306',
     }

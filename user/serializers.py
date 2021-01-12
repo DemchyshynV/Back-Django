@@ -1,4 +1,6 @@
-from rest_framework import serializers
+from rest_framework import serializers, status
+from rest_framework.generics import get_object_or_404
+
 from .models import UserModel, ProfileModel
 
 
@@ -14,6 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
         fields = ['username', 'password', 'email', 'profile']
+        extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         profile = validated_data.pop('profile')
@@ -22,7 +25,6 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
         ProfileModel.objects.create(user=user, **profile)
-
         return user
 
 

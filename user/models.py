@@ -17,5 +17,4 @@ class ProfileModel(models.Model):
     user = models.OneToOneField(UserModel, related_name='profile', on_delete=models.CASCADE)
     phone = models.CharField(max_length=13,
                              unique=True,
-                             blank=True,
                              validators=[RegexValidator(r'^([+])(\d{1,13})$', 'invalid phone number')])

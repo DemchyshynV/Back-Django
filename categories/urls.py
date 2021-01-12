@@ -5,7 +5,8 @@ from categories.views import ProductCategoriesView, EditProductCategoriesView, \
 
 urlpatterns = [
     path('', ProductCategoriesView.as_view()),
-    path('sub_category/<int:pk>', ProductSubCategoriesView.as_view()),
-    path('edit_category/<int:pk>', EditProductCategoriesView.as_view()),
-    path('edit_sub_category/<int:pk>', EditSubProductCategoriesView.as_view()),
+    path('<int:pk>', EditProductCategoriesView.as_view()),
+
+    path('<int:pk>/sub_categories', ProductSubCategoriesView.as_view()),
+    path('sub_categories/<int:pk>', EditSubProductCategoriesView.as_view()),
 ]
